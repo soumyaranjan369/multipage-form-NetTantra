@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Last step</title>
+</head>
+<body>
+    <section>
+        <div class="navbar">
+            <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>
+            <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+            <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+          </div>
+    </section>
+    <section class="body">
+        <div class="left">
+            <div class="top-left">
+                <h1 style="color:#3498db;">constraints</h1>
+                <ul>
+                    <li>Fill all the Fields</li>
+                    <li>Leaving any Filed gives Error message</li>
+                    <li>Leaving any flied blank Shows red borders else shows green</li>
+                    <li>Input Valid Email, it will be checked</li>
+                    <li>Do not input chars in Number field</li>
+                    <li>leaving any Filed blank will not allow to proceed to next Form</li>
+                    <li>All the values will be stored in localStorage</li>
+                </ul>
+            </div>
+            <div class="bottom-left" >
+                <button class="accordion">Step 1 of Form</button>
+                <div class="panel">
+                  <p>Fill your personal details</p>
+                  <p>Name should have min and max character limits</p>
+                </div>
+                
+                <button class="accordion">Step 2 of form</button>
+                <div class="panel">
+                  <p>Fill your Academic Details</p>
+                  <p>etc</p>
+                </div>
+                
+                <button class="accordion">Step 3 of Form</button>
+                <div class="panel">
+                  <p>Upload Essential Documents</p>
+                </div> 
+            </div>
+        </div>
+        <div class="container">
+            <form id="form" class="form" method="POST">
+
+                <div class="form-control">
+                    <label for="passport_photo">Recent Passport size Photogaraph (image size less than 4MB)<span class="reqired">*</span></label>
+                    <input type="file" id="passport_photo" accept=".jpg,.png,.jpeg">
+                    <small>Error Message</small>
+                </div>
+                <div class="form-control">
+                    <label for="hsc_marksheet">HSC mark sheet (image,PDF or docs size less than 4MB)<span class="reqired">*</span></label>
+                    <input type="file" id="hsc_marksheet" accept=".jpg,.png,.jpeg,.docx,.pdf">
+                    <small>Error Message</small>
+                </div>
+                <div class="form-control">
+                    <label for="ssc_marksheet">SSC mark sheet (image,PDF or docs size less than 4MB)<span class="reqired">*</span></label>
+                    <input type="file" id="ssc_marksheet" accept=".jpg,.png,.jpeg,.docx,.pdf">
+                    <small>Error Message</small>
+                </div>
+                <div class="form-control">
+                    <label for="all_sem_marksheet">All Semester mark sheet ina a single PDF or docs (file size less than 10MB)<span class="reqired">*</span></label>
+                    <input type="file" id="all_sem_marksheet" accept=".jpg,.png,.jpeg,.docx,.pdf">
+                    <small>Error Message</small>
+                </div>
+                <button type="submit" >Submit</button>
+            </form>
+        </div>
+        <div class="popup-container" id="popup_container">
+            <div class="popup">
+                <button id="close">&times;</button>
+                <h1>Submited</h1>
+                <p>check again. or Go to Homepage to Submit again</p>
+                <div class="popup-content">
+                    <div id="photo" style="margin: 20px;">
+                        <img src="" id="stored_passport_photo" width="200px">
+                    </div>
+                    <div id="details" style="margin:20px 0">
+                        <table>
+                            <tbody id="user-data">
+    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <a href="./index.html">HOME</a>
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+} 
+
+const local_data={
+    Name:`: ${localStorage.getItem('firstname0')} ${localStorage.getItem('lastname0')}`,
+    Fathers_name : `: ${localStorage.getItem('firstname1')} ${localStorage.getItem('lastname1')}`,
+    Mothers_name : `: ${localStorage.getItem('firstname2')} ${localStorage.getItem('lastname2')}`,
+    gender: `: ${localStorage.getItem('gender')}`,
+    DOB:`: ${localStorage.getItem('dob')}`,
+    Email:`: ${localStorage.getItem('email')}`,
+    Mobile:`: ${localStorage.getItem('mobile')}`,
+    Address:`: ${localStorage.getItem('street')}, ${localStorage.getItem('city')}, ${localStorage.getItem('country')}`,
+    Nationality : `: ${localStorage.getItem('nationality')}`,
+    HSC_education :`: ${localStorage.getItem('hsc_institute')} (${localStorage.getItem('hsc_board')}) with ${localStorage.getItem('hsc_percentage')}% score`,
+    SSC_education:`: ${localStorage.getItem('ssc_institute')} (${localStorage.getItem('ssc_board')}) with ${localStorage.getItem('ssc_percentage')}% score`,
+    Current_education : `: persuing ${localStorage.getItem('curently_pursuing')} at ${localStorage.getItem('current_institute')} with overall ${localStorage.getItem('overall_percentage')}% score`,
+    Backlog : `: ${localStorage.getItem('subject')} in ${localStorage.getItem('semester')} semester`
+}
+
+const table = document.getElementById('user-data');
+
+for (let i in local_data){
+    let row=table.insertRow();
+    let key=row.insertCell(0);
+    key.innerHTML=i;
+    let value=row.insertCell(1);
+    value.innerHTML=local_data[i];
+}
+
+const form = document.getElementById('form');
+const passport_photo = document.getElementById('passport_photo');
+const hsc_marksheet = document.getElementById('hsc_marksheet');
+const ssc_marksheet = document.getElementById('ssc_marksheet');
+const all_sem_marksheet = document.getElementById('all_sem_marksheet');
+const photo = document.getElementById('stored_passport_photo')
+
+passport_photo.addEventListener('change',(e)=>{
+    const file=e.target.files[0];
+    const reader=new FileReader();
+    reader.onloadend=()=>{
+        const base64String=reader.result.replace('data:','').replace(/^.+,/,'');
+        localStorage.setItem('photo',base64String);
+        photo.src=`data:image/png;base64,${base64String}`;
+    };
+    reader.readAsDataURL(file);
+})
+
+// const open=document.getElementById("open");
+const close=document.getElementById("close");
+const popup_container=document.getElementById("popup_container");
+
+// open.addEventListener('click',(e)=>{
+//     e.preventDefault();
+//     popup_container.classList.add('active');
+// })
+
+close.addEventListener('click',()=>{
+    popup_container.classList.remove('active');
+})
+
+
+element_arr=[passport_photo,hsc_marksheet,ssc_marksheet,all_sem_marksheet];
+
+const formatFileSize=function(bytes){
+    const suffixes=['B','KB','MB','GB','TB'];
+    const i=Math.floor(Math.log(bytes)/Math.log(1024));
+    return `${(bytes/Math.pow(1024,i)).toFixed(2)} ${suffixes[i]}`
+}
+
+
+element_arr.forEach((i)=>{
+    i.addEventListener('change',function(e){
+        const file=e.target.files;
+        if (file.length!=0){
+            const formControl=i.parentElement;
+            const small = formControl.querySelector('small');
+            f_size=formatFileSize(file[0].size);
+            if (file[0].size>3000000){
+                small.style.color="red";
+                small.innerHTML=`${f_size} file size limit exeded`
+            }else{
+                small.style.color="green";
+                small.innerHTML=f_size
+            }
+            small.style.visibility="visible";
+        }
+    })
+})
+
+function getFieldName(input){
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+function showError(input,message){
+    const formControl=input.parentElement;
+    formControl.className="form-control error";
+    const small = formControl.querySelector('small');
+    small.innerText=message;
+}
+function showSuccess(input){
+    const formControl=input.parentElement;
+    formControl.className="form-control success"
+}
+
+function checkRequired(inputArr){
+    let check=true;
+    inputArr.forEach(function(input){
+        if (input.value.trim()===''){
+            showError(input,`${getFieldName(input)} is Required`);
+            check=false
+        }else{
+            showSuccess(input);
+            localStorage.setItem(input.id, input.value);
+        }
+    });
+    return check;
+}
+
+form.addEventListener('submit',function(e){
+    e.preventDefault();
+
+    check1 = checkRequired([passport_photo,hsc_marksheet,ssc_marksheet,all_sem_marksheet]);
+    if (check1==true ){
+        popup_container.classList.add('active');
+    }
+});
+</script>
+</html>

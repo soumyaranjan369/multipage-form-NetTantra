@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Mid step</title>
+</head>
+<body>
+    <section>
+        <div class="navbar">
+            <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>
+            <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+            <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+          </div>
+    </section>
+    <section class="body">
+        <div class="left">
+            <div class="top-left">
+                <h1 style="color:#3498db;">constraints</h1>
+                <ul>
+                    <li>Fill all the Fields</li>
+                    <li>Leaving any Filed gives Error message</li>
+                    <li>Leaving any flied blank Shows red borders else shows green</li>
+                    <li>Input Valid Email, it will be checked</li>
+                    <li>Do not input chars in Number field</li>
+                    <li>leaving any Filed blank will not allow to proceed to next Form</li>
+                    <li>All the values will be stored in localStorage</li>
+                </ul>
+            </div>
+            <div class="bottom-left" >
+                <button class="accordion">Step 1 of Form</button>
+                <div class="panel">
+                  <p>Fill your personal details</p>
+                  <p>Name should have min and max character limits</p>
+                </div>
+                
+                <button class="accordion">Step 2 of form</button>
+                <div class="panel">
+                  <p>Fill your Academic Details</p>
+                  <p>etc</p>
+                </div>
+                
+                <button class="accordion">Step 3 of Form</button>
+                <div class="panel">
+                  <p>Upload Essential Documents</p>
+                </div> 
+            </div>
+        </div>
+        <div class="container">
+            <form id="form" class="form" method="POST" action="last_page.html">
+
+                <div class="form-control">
+                    <label for="hsc_institute">HSC Institution name<span class="reqired">*</span></label>
+                    <input type="text" id="hsc_institute" placeholder="Higher Secondary College">
+                    <small>Error Message</small>
+                </div>
+                <div class="dual-column single-field">
+                    <label class="multi-field">HSC board<span class="reqired">*</span></label>
+                    <div class="form-control">
+                        <select name="hsc_board" id="hsc_board" autocomplete="off">
+                            <option value="" selected="true" disabled >Higher Secondary College Board</option>
+                            <option value="CBSE">CBSE</option>
+                            <option value="other1">other1</option>
+                            <option value="other2">other2</option>
+                        </select>
+                        <small>Error Message</small>
+                    </div>
+                </div>
+                <div class="dual-column single-field">
+                    <label class="multi-field">Score in HSC in percentage<span class="reqired">*</span></label>
+                    <div class="form-control">
+                        <input type="number" id="hsc_percentage" placeholder="%">
+                        <small>Error Message</small>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <label for="ssc_institute">SSC Institution name<span class="reqired">*</span></label>
+                    <input type="text" id="ssc_institute" placeholder="SSC institute name">
+                    <small>Error Message</small>
+                </div>
+                <div class="dual-column single-field">
+                    <label class="multi-field">SSC Board<span class="reqired">*</span></label>
+                    <div class="form-control">
+                        <select name="ssc_board" id="ssc_board" autocomplete="off">
+                            <option value="" selected="true" disabled >Secondary College Board</option>
+                            <option value="CBSE">CBSE</option>
+                            <option value="other1">other1</option>
+                            <option value="other2">other2</option>
+                        </select>
+                        <small>Error Message</small>
+                    </div>
+                </div>
+                <div class="dual-column single-field">
+                    <label class="multi-field">Score in SSC in percentage<span class="reqired">*</span></label>
+                    <div class="form-control">
+                        <input type="number" id="ssc_percentage" placeholder="%">
+                        <small>Error Message</small>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <label for="curently_pursuing">Currently Pursuing<span class="reqired">*</span></label>
+                    <input type="text" id="curently_pursuing" placeholder="Current Education">
+                    <small>Error Message</small>
+                </div>
+                <div class="form-control">
+                    <label for="current_institute">Current Educational Institute name<span class="reqired">*</span></label>
+                    <input type="text" id="current_institute" placeholder="Current Educational Institute">
+                    <small>Error Message</small>
+                </div>
+                <div class="dual-column single-field">
+                    <label class="multi-field">Overall percentage<span class="reqired">*</span></label>
+                    <div class="form-control">
+                        <input type="number" id="overall_percentage" placeholder="%">
+                        <small>Error Message</small>
+                    </div>
+                </div>
+                <label for="dob" class="multi-field">Current Back logs if any</label>
+                <div class="dual-column">
+                    <div class="form-control">
+                        <select name="semester" id="semester" autocomplete="off">
+                            <option value="" selected="true" disabled >Select Semester</option>
+                            <option value="1st">1st</option>
+                            <option value="2nd">2nd</option>
+                            <option value="3rd">3rd</option>
+                        </select>
+                        <small>Error Message</small>
+                    </div>
+                    <div class="form-control">
+                        <input type="text" id="subject" placeholder="Mention Subject">
+                        <small>Error Message</small>
+                    </div>
+                </div>
+                <button type="submit"> next</button>
+            </form>
+        </div>
+    </section>
+</body>
+<script>
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+} 
+
+const form = document.getElementById('form');
+const hsc_institute = document.getElementById('hsc_institute');
+const hsc_board = document.getElementById('hsc_board');
+const hsc_percentage = document.getElementById('hsc_percentage');
+const ssc_institute = document.getElementById('ssc_institute');
+const ssc_board = document.getElementById('ssc_board');
+const ssc_percentage = document.getElementById('ssc_percentage');
+const curently_pursuing = document.getElementById('curently_pursuing');
+const current_institute = document.getElementById('current_institute');
+const overall_percentage = document.getElementById('overall_percentage');
+const semester = document.getElementById('semester');
+const subject = document.getElementById('subject');
+
+
+function getFieldName(input){
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+function showError(input,message){
+    const formControl=input.parentElement;
+    formControl.className="form-control error";
+    const small = formControl.querySelector('small');
+    small.innerText=message;
+}
+function showSuccess(input){
+    const formControl=input.parentElement;
+    formControl.className="form-control success"
+}
+
+function checkRequired(inputArr){
+    let check=true;
+    inputArr.forEach(function(input){
+        if (input.value.trim()===''){
+            showError(input,`${getFieldName(input)} is Required`);
+            check=false
+        }else{
+            showSuccess(input);
+            localStorage.setItem(input.id, input.value);
+        }
+    });
+    return check;
+}
+
+function checkLength(input,min,max){
+    let check=true;
+    if (input.value.length<min){
+        showError(input,`${getFieldName(input)} must be al least ${min} cahr`);
+        check=false;
+    }else if(input.value.length > max){
+        showError(input,`${getFieldName(input)} must be less than ${max} char`);
+        check=false;
+    }else{
+        showSuccess(input);
+    }
+    return check;
+}
+
+
+form.addEventListener('submit',function(e){
+    e.preventDefault();
+
+    check1 = checkRequired([hsc_institute,hsc_board,hsc_percentage,ssc_institute,ssc_board,ssc_percentage,curently_pursuing,current_institute,overall_percentage,semester,subject]);
+    check2 = checkLength(hsc_institute,3,15);
+    check3 =checkLength(ssc_institute,3,15);
+    check4 = checkLength(current_institute,6,25);
+    if (check1==true && check2==true && check3==true && check4== true){
+        window.location.href="./last_page.html";
+    }
+});
+</script>
+</html>

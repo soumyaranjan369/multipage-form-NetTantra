@@ -1,0 +1,245 @@
+*{
+    box-sizing: border-box;
+}
+
+:root{
+    --success-color:#2ecc71;
+    --error-color:#e74c3c;
+    --normal-color:#3498db;
+}
+
+body{
+    margin: 0;padding: 0;
+    /* background-color: #f9fafb; */
+    font-family: sans-serif;
+    min-height: 100vh;
+}
+
+h2{
+    text-align: center;
+    margin:0 0 20xp;
+}
+
+ /* Style the navigation bar */
+ .navbar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+  }
+  
+  /* Navbar links */
+  .navbar a {
+    float: right;
+    text-align: center;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Navbar links on mouse-over */
+  .navbar a:hover {
+    background-color: #000;
+  }
+  
+  /* Current/active navbar link */
+  .active {
+    background-color: #3498db;
+  }
+  
+  /* Add responsiveness - will automatically display the navbar vertically instead of horizontally on screens less than 500 pixels */
+  @media screen and (max-width: 500px) {
+    .navbar a {
+      float: none;
+      display: block;
+    }
+  } 
+
+   /* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .accordion:hover {
+    background-color: #ccc;
+  }
+  
+  /* Style the accordion panel. Note: hidden by default */
+  .panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+  } 
+
+section.body{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.left{
+    width: 600px;
+}
+.top-left,.bottom-left{
+    margin: 30px 20px 0 0;
+}
+.top-left{
+    min-height: 400px;
+    border:1px solid #ccc;
+    padding: 0 10px;
+}
+.container{
+    background-color: #f0fafb;
+    border-radius: 5px;
+    width: 800px;
+    margin-top: 30px;
+}
+
+.form{
+    padding: 30px 40px;
+}
+
+.dual-column{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.single-field {
+    justify-content: space-between;
+}
+.dual-column .form-control{
+    width:100%;
+}
+.single-field .form-control{
+    width: 50%;
+}
+.form-control{
+    padding-bottom:10px;
+    position: relative;
+    width: auto;
+    margin: 0 10px 10px 10px;
+}
+
+.form-control label, .form label{
+    color:#777;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.multi-field{
+    margin:0 10px;
+}
+
+.form-control input,.form-control select{
+    border: 2px solid darkgoldenrod;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    background-color: white;
+}
+
+span.reqired{
+    color: red;
+}
+
+select:invalid { color: gray; }
+
+.form-control input:focus{
+    outline: 0;
+    border-color: #777;
+}
+
+.form-control-radio{
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+.form-control-radio label{
+    margin-right: 20px;
+}
+.form-control-radio input{
+    width:auto;
+}
+
+.form-control.success input, .form-control.success select{
+    border-color: var(--success-color);
+}
+
+.form-control.error input, .form-control.form-control.error select{
+    border-color: var(--error-color);
+}
+
+.form-control small{
+    color:var(--error-color);
+    position: absolute;
+    left: 0;
+    visibility: hidden;
+}
+
+.form-control.error small{
+    visibility: visible;
+}
+
+.form button{
+    cursor: pointer;
+    background-color: var(--normal-color);
+    border:2px solid var(--normal-color);
+    border-radius: 4px;
+    color:#fff;
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+.popup-container{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background-color: #8080807a;
+    display:none;
+    align-items: center;
+    justify-content: center;
+}
+.popup-container.active{
+    display:flex;
+}
+
+.popup{
+    background-color:white;
+    padding: 2rem;
+    width:1000px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    position: relative;
+    margin:0 0.5rem;
+}
+
+.popup-content {
+    display: flex;
+}
+
+.popup button{
+    background-color:red;
+    color:white;
+    position: absolute;
+    top:10px;
+    right:10px;
+}
+

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>First Step</title>
+</head>
+<body>
+    <section>
+        <div class="navbar">
+            <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>
+            <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+            <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+          </div>
+    </section>
+    <section class="body">
+        <div class="left">
+            <div class="top-left">
+                <h1 style="color:#3498db;">constraints</h1>
+                <ul>
+                    <li>Fill all the Fields</li>
+                    <li>Leaving any Filed gives Error message</li>
+                    <li>Leaving any flied blank Shows red borders else shows green</li>
+                    <li>Input Valid Email, it will be checked</li>
+                    <li>Do not input chars in Number field</li>
+                    <li>leaving any Filed blank will not allow to proceed to next Form</li>
+                    <li>All the values will be stored in localStorage</li>
+                </ul>
+            </div>
+            <div class="bottom-left" >
+                <button class="accordion">Step 1 of Form</button>
+                <div class="panel">
+                  <p>Fill your personal details</p>
+                  <p>Name should have min and max character limits</p>
+                </div>
+                
+                <button class="accordion">Step 2 of form</button>
+                <div class="panel">
+                  <p>Fill your Academic Details</p>
+                  <p>etc</p>
+                </div>
+                
+                <button class="accordion">Step 3 of Form</button>
+                <div class="panel">
+                  <p>Upload Essential Documents</p>
+                </div> 
+            </div>
+        </div>
+        <div class="container">
+            <form id="form" class="form" method="POST" >
+
+                <label for="dob" class="multi-field">Name<span class="reqired">*</span></label>
+                <div class="dual-column">
+                    <div class="form-control">
+                        <input type="text" id="firstname0" placeholder="First name">
+                        <small>Error Message</small>
+                    </div>
+                    <div class="form-control">
+                        <input type="text" id="lastname0" placeholder="Last name">
+                        <small>Error Message</small>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <label for="dob">Date of Birth<span class="reqired">*</span></label>
+                    <input type="date" id="dob" placeholder="Select DOB">
+                    <small>Error Message</small>
+                </div>
+                <div class="form-control">
+                    <label for="email">Email<span class="reqired">*</span></label>
+                    <input type="email" id="email" placeholder="Email">
+                    <small>Error Message</small>
+                </div>
+                <label for="dob" class="multi-field">Father's Name<span class="reqired">*</span></label>
+                <div class="dual-column">
+                    <div class="form-control">
+                        <input type="text" id="firstname1" placeholder="First name">
+                        <small>Error Message</small>
+                    </div>
+                    <div class="form-control">
+                        <input type="text" id="lastname1" placeholder="Last name">
+                        <small>Error Message</small>
+                    </div>
+                </div>
+                <label for="dob" class="multi-field">Mother's Name<span class="reqired">*</span></label>
+                <div class="dual-column">
+                    <div class="form-control">
+                        <input type="text" id="firstname2" placeholder="First name">
+                        <small>Error Message</small>
+                    </div>
+                    <div class="form-control">
+                        <input type="text" id="lastname2" placeholder="Last name">
+                        <small>Error Message</small>
+                    </div>
+                </div>
+                <label class="multi-field">Gender<span class="reqired">*</span></label>
+                <div class="form-control">
+                    <div class="form-control-radio">
+                        <input type="radio" name="gender" id="male"  value="Male">
+                        <label for="male">M</label>
+                        <input type="radio" name="gender" id="female"  value="Female">
+                        <label for="female">F</label>
+                    </div>
+                    <small>Error Message</small>
+                </div>
+                <div class="form-control">
+                    <label for="nationality">Nationality<span class="reqired">*</span></label>
+                    <input type="text" id="nationality" placeholder="Nationality">
+                    <small>Error Message</small>
+                </div>
+                <label class="multi-field">Street Address<span class="reqired">*</span></label>
+                <div class="form-control">
+                    <input type="text" id="street" placeholder="Street Address">
+                    <small>Error Message</small>
+                </div>
+                <div class="dual-column">
+                    <div class="form-control">
+                        <input type="text" id="city" placeholder="City">
+                        <small>Error Message</small>
+                    </div>
+                    <div class="form-control">
+                        <select name="country" id="country" autocomplete="off">
+                            <option value="" selected="true" disabled>Country</option>
+                            <option value="India">India</option>
+                            <option value="Pakistan">Pakistan</option>
+                            <option value="Bangladesh">Bangladesh</option>
+                            <option value="Shrilanka">Shrilanka</option>
+                            <option value="Nepal">Nepal</option>
+                            <option value="Bhutan">Bhutan</option>
+                            <option value="Miyanmar">Miyanmar</option>
+                            <option value="China">China</option>
+                        </select>
+                        <small>Error Message</small>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <label for="telephone_home">Telephone - Home</label>
+                    <input type="number" id="telephone_home" placeholder="## ##### #####">
+                    <small>Error Message</small>
+                </div>
+                <div class="form-control">
+                    <label for="mobile">Telephone - Mobile<span class="reqired">*</span></label>
+                    <input type="number" id="mobile" placeholder="## ##### #####">
+                    <small>Error Message</small>
+                </div>
+                <button type="submit"> next</button>
+            </form>
+        </div>
+    </section>
+</body>
+<script>
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+} 
+
+const form = document.getElementById('form');
+const f_name0 = document.getElementById('firstname0');
+const l_name0 = document.getElementById('lastname0');
+const dob = document.getElementById('dob');
+const email = document.getElementById('email');
+const f_name1 = document.getElementById('firstname1');
+const l_name1 = document.getElementById('lastname1');
+const f_name2 = document.getElementById('firstname2');
+const l_name2 = document.getElementById('lastname2');
+const gender = document.getElementsByName('gender');
+const nationality = document.getElementById('nationality');
+const street = document.getElementById('street');
+const city = document.getElementById('city');
+const country = document.getElementById('country');
+const mobile = document.getElementById('mobile');
+
+
+function getFieldName(input){
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+function showError(input,message){
+    const formControl=input.parentElement;
+    formControl.className="form-control error";
+    const small = formControl.querySelector('small');
+    small.innerText=message;
+}
+function showSuccess(input){
+    const formControl=input.parentElement;
+    formControl.className="form-control success"
+}
+
+
+function checkRequired(inputArr){
+    let check=true;
+    inputArr.forEach(function(input){
+        if (input.value.trim()===''){
+            showError(input,`${getFieldName(input)} is Required`);
+            check=false
+        }else{
+            showSuccess(input);
+            localStorage.setItem(input.id, input.value);
+        }
+    });
+    return check;
+}
+
+function checkLength(input,min,max){
+    let check=true;
+    if (input.value.length<min){
+        showError(input,`${getFieldName(input)} must be al least ${min} cahr`);
+        check=false;
+    }else if(input.value.length > max){
+        showError(input,`${getFieldName(input)} must be less than ${max} char`);
+        check=false;
+    }else{
+        showSuccess(input);
+    }
+    return check;
+}
+
+function checkGender(){
+    let check=true;
+    if (gender[0].checked == false && gender[1].checked == false){
+        const formControl=gender[0].parentElement.parentElement;
+        formControl.classList.add('error');
+        const small = formControl.querySelector('small');
+        small.innerText="gender is required";
+        check=false;
+    }
+    if (gender[0].checked == true && gender[1].checked == false){
+        const formControl=gender[0].parentElement.parentElement;
+        const small = formControl.querySelector('small');
+        small.style.visibility="hidden";
+        localStorage.setItem('gender',gender[0].value);
+    }
+    if (gender[0].checked == false && gender[1].checked == true){
+        const formControl=gender[0].parentElement.parentElement;
+        const small = formControl.querySelector('small');
+        small.style.visibility="hidden";
+        localStorage.setItem('gender',gender[1].value);
+    }
+    return check;
+}
+
+function checkEmail(input){
+    let check=true;
+    const re=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    // return re.test(String(email).toLowerCase());
+    if (re.test(input.value.trim())){
+        showSuccess(input);
+    }else{
+        showError(input,"Email is not valid")
+        check=false;
+    }
+    return check;
+}
+
+
+form.addEventListener('submit',function(e){
+    e.preventDefault();
+
+    check1 = checkRequired([f_name0,l_name0,f_name1,l_name1,f_name2,l_name2,dob,email,nationality,street,city,country,mobile]);
+    check2 = checkGender();
+    check3 = checkLength(f_name0,3,15);
+    check4 =checkLength(l_name0,3,15);
+    check5 = checkLength(street,6,25);
+    check6 = checkLength(mobile,10,10);
+    check7 = checkEmail(email)
+    if (check1==true && check2==true && check3==true && check4== true&& check5==true && check6== true && check7==true){
+        window.location.href="./mid_page.html";
+    }else{
+        localStorage.clear();
+    }
+});
+</script>
+</html>
